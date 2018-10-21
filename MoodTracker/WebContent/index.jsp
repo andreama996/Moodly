@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mood Tracker</title>
+<title>Moodly</title>
 </head>
 <body>
 <h1><% out.println("Hello Azure from Moodly! Now with git working! And me too!!"); %></h1>
