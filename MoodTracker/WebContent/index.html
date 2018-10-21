@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="style.css" type="text/css" rel="stylesheet">
+
+	<title>Moodly</title>
+
+  </head>
+
+  <body>
+	<header>
+  	<ul class="navbar">
+    	<li class="name">Moodly</li>
+    	<li class="navbarli active"><a href="index.html"><img src="home.png" alt="Home"/></a></li>
+    	<li class="navbarli"><a href="calendar.html"><img src="calendar.png" alt="Calendar"/></a></li>
+    	<li class="navbarli"><a href="resources.html"><img src="resources.png" alt="Information"/></a></li>
+    	<li class="navbarli"><a href="settings.html"><img src="settings.png" alt="Settings"/></a></li>
+  	</ul>
+	</header>
+
+	<!-- Optional JavaScript -->
+  	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+	<section class="content">
+  	<h1>How do you feel right now?</h1>
+  	<button id="excited" onclick="logMood();">Excited</button>
+  	<button id="happy">Happy</button>
+  	<button id="relaxed">Relaxed</button>
+  	<button id="content">Content</button>
+  	<button id="sad">Sad</button>
+  	<button id="anxious">Anxious</button>
+  	<button id="depressed">Depressed</button>
+  	<button id="angry">Angry</button>
+
+  	<input type="button" id="excited" onclick="changeButtonColor(excited);" />
+	</section>
+	
+	<script>
+		function logMood(str) {
+		  var xhttp;    
+		  if (str == "") {
+		    document.getElementById("txtHint").innerHTML = "";
+		    return;
+		  }
+		  xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		      document.getElementById("txtHint").innerHTML = this.responseText;
+		    }
+		  };
+		  xhttp.open("GET", "getcustomer.asp?q="+str, true);
+		  xhttp.send();
+		}
+	</script>
+
+	</body>
+  </html>
+
+
