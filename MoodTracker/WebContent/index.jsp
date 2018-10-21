@@ -7,6 +7,6 @@
 <title>Mood Tracker</title>
 </head>
 <body>
-<h1><% out.println("Hello Azure from Moodly! Now with git working!"); %></h1>
+<h1><% out.println("Hello Azure from Moodly! Now with git working! And me too!!"); %></h1>
 </body>
 </html>
