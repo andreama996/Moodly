@@ -6,69 +6,213 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link href="style.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rochester" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 	<title>Moodly</title>
 
+	<link rel="stylesheet" id="smooth_slider_headcss-css" type="text/css" media="all">
   </head>
 
   <body>
 	<header>
-  	<ul class="navbar">
-    	<li class="name">Moodly</li>
-    	<li class="navbarli active"><a href="index.html"><img src="home.png" alt="Home"/></a></li>
-    	<li class="navbarli"><a href="calendar.html"><img src="calendar.png" alt="Calendar"/></a></li>
-    	<li class="navbarli"><a href="resources.html"><img src="resources.png" alt="Information"/></a></li>
-    	<li class="navbarli"><a href="settings.html"><img src="settings.png" alt="Settings"/></a></li>
-  	</ul>
+  	<div class="navbar">
+    	<h1 class="name">Moodly.</h1>
+    	<div class="navbar-right">
+      	<a class="active" href="index.html"><img src="home.png" alt="Home"/></a>
+      	<a href="index.html#calendar"><img src="calendar.png" alt="Calendar"/></a>
+      	<a href="index.html#help"><img src="resources.png" alt="Help"/></a>
+    	</div>
+  	</div>
 	</header>
-
+	<br><br><br>
 	<!-- Optional JavaScript -->
   	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-	<section class="content">
-	  	<h1>How do you feel right now?</h1>
-	  	<button id="excited" value="excited!" onclick="logMood(this.value);">Excited</button>
-	  	<button id="happy" value="happy" onclick="logMood(this.value);">Happy</button>
-	  	<button id="relaxed" value="excited!" onclick="logMood(this.value);">Relaxed</button>
-	  	<button id="content" value="excited!" onclick="logMood(this.value);">Content</button>
-	  	<button id="sad" value="excited!" onclick="logMood(this.value);">Sad</button>
-	  	<button id="anxious" value="excited!" onclick="logMood(this.value);">Anxious</button>
-	  	<button id="depressed" value="excited!" onclick="logMood(this.value);">Depressed</button>
-	  	<button id="angry" value="excited!" onclick="logMood(this.value);">Angry</button>
-	  	<input type="button" id="excited" onclick="changeButtonColor(excited);" />
+	<section class="buttons">
+  	<h2 id="howDYF">How do you feel right now?</h2>
+      	<button id="moodBtn" value="excited" onclick="logMood(this.value);">Excited</button>
+      	<button id="moodBtn" value="happy" onclick="logMood(this.value);">Happy</button>
+      	<button id="moodBtn" value="content" onclick="logMood(this.value);">Content</button>
+      	<button id="moodBtn" value="sad" onclick="logMood(this.value);">Sad</button>
+      	<button id="moodBtn" value="anxious" onclick="logMood(this.value);">Anxious</button>
+      	<button id="moodBtn" value="angry" onclick="logMood(this.value);">Angry</button>
 	</section>
-	
-	<p id="p1">Magic</p>
-	
-	<script>	  
-		function logMood(str) {
-			var currentDate = new Date(),
-		      day = currentDate.getDate(),
-		      month = currentDate.getMonth() + 1,
-		      year = currentDate.getFullYear();
-		  
-		  document.getElementById("p1").innerHTML = str + "  " + day + "/" + month + "/" + year;
-		}
-		
-		function showCustomer(str) {
-		  var xhttp;    
-		  if (str == "") {
-		    document.getElementById("txtHint").innerHTML = "";
-		    return;
-		  }
-		  xhttp = new XMLHttpRequest();
-		  xhttp.onreadystatechange = function() {
-		    if (this.readyState == 4 && this.status == 200) {
-		      document.getElementById("txtHint").innerHTML = this.responseText;
-		    }
-		  };
-		  xhttp.open("GET", "getcustomer.asp?q="+str, true);
-		  xhttp.send();
-		}
-	</script>
 
-	</body>
-  </html>
 
+	<section class="textbox">
+	</br>
+   	<h4>Go into more detail about why you are </h4>
+   	<h2 id="p1">...</h2> 
+
+  	<input type="text" id="descriptionOfMood" value="">
+  	</br> <button id="submit" onclick="storeCal(); storeText();">Submit</button>
+
+	</section>
+
+  </br>
+
+<!-- calendar -->
+<div id="calendar">
+	<br>
+	<br>
+	<br>
+	<div class="month">
+  	<h2>October<br>2018</h2>
+	</div>
+
+    	<ul class="weekdays">
+        	<li>Mo</li>
+        	<li>Tu</li>
+        	<li>We</li>
+        	<li>Th</li>
+        	<li>Fr</li>
+        	<li>Sa</li>
+        	<li>Su</li>
+    	</ul>
+
+    	<section class="days">
+        	<button id="1" onclick="sendAlert(1)">1</button>
+        	<button id="2" onclick="sendAlert(2)">2</button>
+        	<button id="3" onclick="sendAlert(3)">3</button>
+        	<button id="4" onclick="sendAlert(4)">4</button>
+        	<button id="5" onclick="sendAlert(5)">5</button>
+        	<button id="6" onclick="sendAlert(6)">6</button>
+        	<button id="7" onclick="sendAlert(7)">7</button>
+        	<button id="8" onclick="sendAlert(8)">8</button>
+        	<button id="9" onclick="sendAlert(9)">9</button>
+        	<button id="10" onclick="sendAlert(10)">10</button>
+        	<button id="11" onclick="sendAlert(11)">11</button>
+        	<button id="12" onclick="sendAlert(12)">12</button>
+        	<button id="13" onclick="sendAlert(13)">13</button>
+        	<button id="14" onclick="sendAlert(14)">14</button>
+        	<button id="15" onclick="sendAlert(15)">15</button>
+        	<button id="16" onclick="sendAlert(16)">16</button>
+        	<button id="17" onclick="sendAlert(17)">17</button>
+        	<button id="18" onclick="sendAlert(18)">18</button>
+        	<button id="19" onclick="sendAlert(19)">19</button>
+        	<button id="20" onclick="sendAlert(20)">20</button>
+        	<button id="21" onclick="sendAlert(21)">21</button>
+        	<button id="22" onclick="sendAlert(22)">22</button>
+        	<button id="23" onclick="sendAlert(23)">23</button>
+        	<button id="24" onclick="sendAlert(24)">24</button>
+        	<button id="25" onclick="sendAlert(25)">25</button>
+        	<button id="26" onclick="sendAlert(26)">26</button>
+        	<button id="27" onclick="sendAlert(27)">27</button>
+        	<button id="28" onclick="sendAlert(28)">28</button>
+        	<button id="29" onclick="sendAlert(29)">29</button>
+        	<button id="30" onclick="sendAlert(30)">30</button>
+        	<button id="31" onclick="sendAlert(31)">31</button>
+    	</section>
+
+  	</div>
+  	
+  	<div id="help">
+
+        	<h2 class="help">
+            	Get Help
+        	</h2>
+
+        	<p>
+            	The <a href="https://www.nami.org/" target="_blank" id="helpLink">National Alliance on Mental Illness</a> works to improve the lives of those living
+            	with mental illness by working to change the stigma against mental illness and
+            	build up family relationships.
+        	</p>
+
+        	<img src="NAMI.jpg" alt="NAMI" id="helpPicR">
+
+        	<p>
+            	The <a href="https://www.nimh.nih.gov/index.shtml" target="_blank" id="helpLink">National Institute of Mental Health</a> is a research organization that works to
+            	understand the treatment and prevention of mental disorders. It provides outreach
+            	and education opportunities to help people with mental illness feel supported.
+        	</p>
+
+        	<img src="NIMH.jpg" alt="NIMH" id="helpPicL">
+
+        	<p>
+            	The <a href="https://www.apa.org/" target="_blank" id="helpLink">American Psychological Association</a> is a group of clinical psychologists who
+            	work with people with mental illness to alleviate symptoms and offer therapy and
+            	support.
+        	</p>
+
+        	<img src="APA.jpg" alt="APA" id="helpPicR">
+
+        	<p>
+            	The <a href="https://adaa.org/" target="_blank" id="helpLink">Anxiety and Depression Association of America</a> provides education, resources,
+            	and treatment for those living with anxiety and/or depression.
+        	</p>
+
+        	<img src="ADAA.jpg" alt="ADAA" id="helpPicL">
+
+    	</section>  	
+
+  </body>
+
+</br>
+
+  <script>
+  	var textInputted = "";
+  	var messagesArray = [];
+  	var length = 31;
+  	for(var i = 0 ; i < length ; i++) {
+  		messagesArray.push("");
+  	}
+ 	function storeText() {
+		var currentDate = new Date(),
+	    	day = currentDate.getDate(),
+	    	month = currentDate.getMonth() + 1,
+	    	year = currentDate.getFullYear();
+		textInputted = document.getElementById("descriptionOfMood").value;
+		messagesArray[day - 1] = textInputted;
+  	} 
+
+  	function logMood(str) {
+      	var currentDate = new Date(),
+        	day = currentDate.getDate(),
+        	month = currentDate.getMonth() + 1,
+        	year = currentDate.getFullYear();
+
+    	document.getElementById("p1").innerHTML = str;
+    	if (str == "excited") {
+          	document.getElementById(day).style.background = "#33cc33";
+    	}
+    	else if (str == "happy") {
+        	document.getElementById(day).style.background = "yellow";
+    	}
+    	else if (str == "content") {
+        	document.getElementById(day).style.background = "#cc66ff";
+    	}
+    	else if (str == "sad") {
+        	document.getElementById(day).style.background = "skyblue";
+    	}
+    	else if(str == "anxious") {
+        	document.getElementById(day).style.background = "orange";
+    	}
+    	else if(str == "angry") {
+        	document.getElementById(day).style.background = "red";
+    	}
+  	}
+
+  	function storeCal() {
+    	var currentDate = new Date(),
+      	day = currentDate.getDate(),
+      	month = currentDate.getMonth() + 1,
+      	year = currentDate.getFullYear();
+  	}
+
+  	function sendAlert(day) {
+  		if(messagesArray[day - 1] != "") {
+  	    	alert(messagesArray[day - 1]);
+  		}
+  	}
+
+  </script>
+
+</html>
 
