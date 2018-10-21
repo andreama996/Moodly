@@ -27,21 +27,31 @@
   	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
 	<section class="content">
-  	<h1>How do you feel right now?</h1>
-  	<button id="excited" onclick="logMood();">Excited</button>
-  	<button id="happy">Happy</button>
-  	<button id="relaxed">Relaxed</button>
-  	<button id="content">Content</button>
-  	<button id="sad">Sad</button>
-  	<button id="anxious">Anxious</button>
-  	<button id="depressed">Depressed</button>
-  	<button id="angry">Angry</button>
-
-  	<input type="button" id="excited" onclick="changeButtonColor(excited);" />
+	  	<h1>How do you feel right now?</h1>
+	  	<button id="excited" value="excited!" onclick="logMood(this.value);">Excited</button>
+	  	<button id="happy" value="happy" onclick="logMood(this.value);">Happy</button>
+	  	<button id="relaxed" value="excited!" onclick="logMood(this.value);">Relaxed</button>
+	  	<button id="content" value="excited!" onclick="logMood(this.value);">Content</button>
+	  	<button id="sad" value="excited!" onclick="logMood(this.value);">Sad</button>
+	  	<button id="anxious" value="excited!" onclick="logMood(this.value);">Anxious</button>
+	  	<button id="depressed" value="excited!" onclick="logMood(this.value);">Depressed</button>
+	  	<button id="angry" value="excited!" onclick="logMood(this.value);">Angry</button>
+	  	<input type="button" id="excited" onclick="changeButtonColor(excited);" />
 	</section>
 	
-	<script>
+	<p id="p1">Magic</p>
+	
+	<script>	  
 		function logMood(str) {
+			var currentDate = new Date(),
+		      day = currentDate.getDate(),
+		      month = currentDate.getMonth() + 1,
+		      year = currentDate.getFullYear();
+		  
+		  document.getElementById("p1").innerHTML = str + "  " + day + "/" + month + "/" + year;
+		}
+		
+		function showCustomer(str) {
 		  var xhttp;    
 		  if (str == "") {
 		    document.getElementById("txtHint").innerHTML = "";
